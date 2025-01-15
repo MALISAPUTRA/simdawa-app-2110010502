@@ -8,7 +8,6 @@ class Beasiswa extends CI_Controller
         parent::__construct();
         $this->load->model('BeasiswaModel');
         $this->load->model('JenisModel');
-        $this->load->library('PDF');
         //$this->load->model(array('BeasiswaModel', 'JenisModel')); 
     }
 
