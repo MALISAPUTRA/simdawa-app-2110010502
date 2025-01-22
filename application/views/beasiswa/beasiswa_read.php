@@ -19,13 +19,15 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <?php
-                $this->load->view('template/notifikasi') 
+                $this->load->view('template/notifikasi')
                 ?>
                 <div class="card">
                     <div class="card-header">
-                        Data Beasiswa
-                        <a href="<?= base_url('beasiswa/tambah') ?>" class="btn btn-sm btn-success float-right"><i class="fas fa-plus">Tambah Data</i></a>
-                        <a href="<?= base_url('beasiswa/cetak') ?>" class="btn btn-sm btn-info mr-1 float-right"><i class="fas fa-print">Cetak Data</i></a>
+                        <?php if ($this->session->userdata('peran') != 'ADMIN'): ?>
+                            Data Beasiswa
+                            <a href="<?= base_url('beasiswa/tambah') ?>" class="btn btn-sm btn-success float-right"><i class="fas fa-plus">Tambah Data</i></a>
+                            <a href="<?= base_url('beasiswa/cetak') ?>" class="btn btn-sm btn-info mr-1 float-right"><i class="fas fa-print">Cetak Data</i></a>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered" id="mytabel">
@@ -52,8 +54,10 @@
                                         <td><?= $a->nama_jenis ?></td>
                                         <td><?= $a->keterangan ?></td>
                                         <td>
-                                            <a href="<?= base_url('beasiswa/ubah/' . $a->id) ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> Ubah</a>
-                                            <a href="<?= base_url('beasiswa/hapus/' . $a->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Ingin hapus data ini?')"><i class="fas fa-trash"></i> Hapus</a>
+                                            <?php if ($this->session->userdata('peran') != 'ADMIN'): ?>
+                                                <a href="<?= base_url('beasiswa/ubah/' . $a->id) ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> Ubah</a>
+                                                <a href="<?= base_url('beasiswa/hapus/' . $a->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Ingin hapus data ini?')"><i class="fas fa-trash"></i> Hapus</a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php

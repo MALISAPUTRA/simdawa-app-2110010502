@@ -65,4 +65,10 @@ class Jenis extends CI_Controller
             redirect('jenis');
         }
     }
+
+    public function cetak()
+    {
+        $data['jenis'] = $this->JenisModel->get_jenis();
+        $this->load->view('jenis/jenis_print', $data);
+    }
 }

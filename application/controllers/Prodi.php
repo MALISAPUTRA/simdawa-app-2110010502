@@ -61,4 +61,5 @@ class Prodi extends CI_Controller
         $data['prodi'] = $this->ProdiModel->get_prodi();
         $this->load->view('prodi/prodi_print', $data);
     }
+    
 }
